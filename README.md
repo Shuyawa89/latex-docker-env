@@ -39,3 +39,15 @@ docker run --rm -v $PWD:/workdir latex pdflatex sample.tex
 ```
 
 成功すれば、workdir内にPDFファイルが出力されます。
+
+## VScodeでの使用
+### 拡張機能の設定
+
+VSCodeで書く場合には、Latex WorkshopとRemote-Containersの拡張機能をインストールしてください。
+
+### Dev-Containersの設定
+1. [こちらの拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers){:target="_blank"}をインストール
+
+2. VSCodeの左下にある「><」をクリックし、「Remote-Containers: Open Folder in Container...」を選択
+
+3. このリポジトリをcloneしたディレクトリを選択
