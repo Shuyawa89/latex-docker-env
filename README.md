@@ -46,7 +46,8 @@ docker run --rm -v $PWD:/workdir latex pdflatex sample.tex
 VSCodeで書く場合には、Latex WorkshopとRemote-Containersの拡張機能をインストールしてください。
 
 ### Dev-Containersの設定
-1. [こちらの拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers){:target="_blank"}をインストール
+1. <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" target="_blank">こちらの拡張機能</a>をインストール
+
 
 2. VSCodeの左下にある「><」をクリックし、「Remote-Containers: Open Folder in Container...」を選択
 
