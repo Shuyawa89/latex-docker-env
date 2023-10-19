@@ -1,11 +1,13 @@
 # 基本となるイメージを指定
 FROM ubuntu:22.04
 
+#ストレージに余裕がない場合はこっちを使うこと
+
 # 必要なパッケージのインストール
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     # TeX Liveとlatexmk、latexindentのインストール
-    texlive-full && \
+    texlive-lang-japanese texlive-fonts-recommended texlive-fonts-extra texlive-latex-extra latexmk texlive-extra-utils && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
