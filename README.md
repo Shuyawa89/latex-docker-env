@@ -40,6 +40,12 @@ docker run --rm -v $PWD:/workdir latex pdflatex sample.tex
 
 成功すれば、workdir内にPDFファイルが出力されます。
 
+## Terminalの起動
+ターミナルを起動したい場合は以下のコマンドを実行する
+```bash
+docker run --rm -v $PWD/workdir:/workdir -it latex
+```s
+
 ## VScodeでの使用
 ### 拡張機能の設定
 
