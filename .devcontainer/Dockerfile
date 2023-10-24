@@ -5,7 +5,7 @@ FROM ubuntu:22.04
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     # TeX Liveとlatexmk、latexindentのインストール
-    texlive-full && \
+    texlive-full latexmk && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
