@@ -1,33 +1,4 @@
 {
-    "files.insertFinalNewline": true,
-    "files.trimFinalNewlines": true,
-    "files.trimTrailingWhitespace": true,
-
-    "latex-workshop.latex.recipes": [
-        {
-            "name": "platex + dvipdfmx",
-            "tools": [
-                "platex",
-                "dvipdfmx"
-            ]
-        }
-    ],
-    "latex-workshop.latex.tools": [
-        {
-            "name": "platex",
-            "command": "platex",
-            "args": [
-                "%DOC%"
-            ],
-            "env": {}
-        },
-        {
-            "name": "dvipdfmx",
-            "command": "dvipdfmx",
-            "args": [
-                "-V 4",
-                "%DOC%"
-            ]
-        }
-    ]
+    // レシピ変更はここで選択する
+    "latex-workshop.latex.recipe.default": "first"
 }

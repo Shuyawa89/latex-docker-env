@@ -1,69 +1,49 @@
 # LaTeX Docker Environment
 
-## Overview
-このリポジトリは、TeX Liveを使用したLaTeX環境をDockerで構築するためのものです。VSCodeの拡張機能を用いることで、ほとんど環境構築することなく、LaTeXを利用することができます。
+## 概要
+このリポジトリは、TeX Liveを使用したLaTeX環境をDocker上で構築するためのものです。VSCodeの拡張機能とともに、環境構築なしでLaTeXを使用できます。VSCodeを利用しない場合でも、Dockerイメージ上でLaTeXファイルをコンパイル可能です。
 
-また、VSCodeを利用しない場合でも、Latexで作成されたファイルをDockerイメージ上でコンパイルすることができます。その場合はTerminalでdockerコマンドを実行し、コンテナ内で実行してください。
+## 使用環境
 
-## Environment
+- **OS (Ubuntu):** 22.04
+- **TeX Live:** 2022
 
-| Software | Version |
-| -------- | ------- |
-| OS (Ubuntu) | 22.04 |
-| TeX Live | 2022 |
+## 用語
 
-## Terms
-
-- **TeX Live**：TeXとそれに関連するプログラムの包括的なディストリビューション。多くのTeXパッケージやLaTeXクラス、フォントなどを含む。
-
-## VScodeでの使用
-### 拡張機能の設定
-
-VSCodeで書く場合には、ローカルの環境にRemote-Containersの拡張機能をインストールしてください。
-
-# Usage
-## リポジトリのクローン
-以下のコマンドを実行して、このリポジトリのクローンを作成して下さい。
-```bash
-git clone https://github.com/Shuyawa89/latex-docker-env.git
-```
+- **TeX Live:** TeXやLaTeXを利用するためのプログラムやパッケージを集めたディストリビューション。
 
 ## VSCodeでの使用
+
+### 必要な拡張機能
+- Remote-Containers
+- LaTeX Workshop
+
 ### Dev-Containersの設定
-1. <a href="https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers" target="_blank">こちらの拡張機能</a>をインストール
+1. [Remote-Containers拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode-remote.remote-containers)をインストールします。
+2. VSCodeの左下の「><」アイコンをクリックし、「Remote-Containers: Open Folder in Container...」を選択。
+3. このリポジトリをcloneしたディレクトリを選択します。
 
+### LaTeXのコンパイル設定について
+VSCodeのLaTeX Workshop拡張機能の設定で、`latex-workshop.autoBuild.run`を`onSave`にしている場合、TeXファイルを保存するたびに自動的にコンパイルが行われます。
 
-2. VSCodeの左下にある「><」をクリックし、「Remote-Containers: Open Folder in Container...」を選択
+#### 参考文献の有無でのコンパイルの切り替え方法:
+`devcontainer.json`の`"latex-workshop.latex.recipe.default": "first"`を任意のrecipe名に書き換えて下さい。
 
-3. このリポジトリをcloneしたディレクトリを選択
+この切り替えは、VSCodeの設定や、各TeXファイルのヘッダーに特定の設定を書くことで行えます。
 
-これにより、VSCodeでLaTexの環境構築なしにtexで書くことができます。
+## Terminalでの使用方法
 
-### 基本的な使い方
-1. workdirの中に.texファイルを作成する
-2. 保存する
-
-## Terminalでの実行
-
-まず、Dockerfileがあるディレクトリで以下のコマンドを実行してDockerイメージをビルドします：
-
+### Dockerイメージのビルド
 ```bash
 docker image build -f Dockerfile -t latex
 ```
 
 ### LaTeXファイルのコンパイル
-
-Latexファイルをコンパイルするには以下のコマンドを実行します。
-この例ではworkdir内に入っているsample.texをコンパイルします。
-
 ```bash
 docker run --rm -v $PWD:/workdir latex pdflatex sample.tex
 ```
 
-成功すれば、workdir内にPDFファイルが出力されます。
-
-## Terminalの起動
-ターミナルを起動したい場合は以下のコマンドを実行する
+### ターミナルの起動
 ```bash
 docker run --rm -v $PWD/workdir:/workdir -it latex
 ```

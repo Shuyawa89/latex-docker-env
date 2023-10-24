@@ -1,18 +1,63 @@
 {
-    "name" : "LaTeX",
-    "dockerFile" : "Dockerfile",
+    "name": "LaTeX",
+    "dockerFile": "Dockerfile",
     "customizations": {
         "vscode": {
             "settings": {
                 "files.insertFinalNewline": true,
                 "files.trimFinalNewlines": true,
                 "files.trimTrailingWhitespace": true,
+
+                //latexファイルの設定
+                "[latex]": {
+                    "editor.wordWrap": "on",
+                    "editor.wordSeparators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?。．、，（）「」『』［］｛｝《》てにをはがのともへでや ",
+                    "editor.tabSize": 4,
+                    "editor.insertSpaces": true,
+                    "editor.detectIndentation": false,
+                    "editor.suggestSelection": "recentlyUsedByPrefix",
+                    "editor.suggest.snippetsPreventQuickSuggestions": false,
+                    "editor.quickSuggestions": {
+                        "other": true,
+                        "comments": false,
+                        "strings": false
+                    },
+                    "editor.bracketPairColorization.enabled": true,
+                    "editor.unicodeHighlight.invisibleCharacters": true,
+                    "editor.unicodeHighlight.allowedCharacters": {
+                        "，": true,
+                        "．": true,
+                        "！": true,
+                        "？": true,
+                        "［": true,
+                        "］": true,
+                        "｛": true,
+                        "｝": true,
+                        "＜": true,
+                        "＞": true
+                    },
+                    "editor.stickyScroll.enabled": true
+                },
+
+                //latex-workshopとコンパイル設定
                 "latex-workshop.latex.autoBuild.run": "onSave",
+                "latex-workshop.intellisense.package.enabled": true,
+                "latex-workshop.latex.autoClean.run": "onBuilt",
                 "latex-workshop.latex.recipes": [
                     {
-                        "name": "platex + dvipdfmx",
+                        "name": "uplatex-with-bibtex",
                         "tools": [
-                            "platex",
+                            "uplatex",
+                            "pbibtex",
+                            "uplatex",
+                            "uplatex",
+                            "dvipdfmx"
+                        ]
+                    },
+                    {
+                        "name": "uplatex-without-bibtex",
+                        "tools": [
+                            "uplatex",
                             "dvipdfmx"
                         ]
                     }
@@ -22,22 +67,54 @@
                         "name": "platex",
                         "command": "platex",
                         "args": [
+                            "-synctex=1",
+                            "-interaction=nonstopmode",
+                            "-file-line-error",
+                            "-kanji=utf8",
+                            "-shell-escape",
                             "%DOC%"
-                        ],
-                        "env": {}
+                        ]
                     },
                     {
                         "name": "dvipdfmx",
                         "command": "dvipdfmx",
                         "args": [
-                            "-V 4",
+                            "%DOCFILE%.dvi"
+                        ]
+                    },
+                    {
+                        "name": "pbibtex",
+                        "command": "pbibtex",
+                        "args": [
+                            "-kanji=utf8",
+                            "%DOCFILE%"
+                        ]
+                    },
+                    {
+                        "name": "uplatex",
+                        "command": "uplatex",
+                        "args": [
+                            "-synctex=1",
+                            "-interaction=nonstopmode",
+                            "-file-line-error",
+                            "-kanji=utf8",
+                            "-shell-escape",
                             "%DOC%"
+                        ]
+                    },
+                    {
+                        "name": "upbibtex",
+                        "command": "upbibtex",
+                        "args": [
+                            "-kanji=utf8",
+                            "%DOCFILE%"
                         ]
                     }
                 ]
             },
             "extensions": [
-                "James-Yu.latex-workshop"
+                "James-Yu.latex-workshop",
+                "MS-CEINTL.vscode-language-pack-ja"
             ]
         }
     }
