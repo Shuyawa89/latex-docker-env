@@ -1,4 +1,7 @@
 {
-    // レシピ変更はここで選択する
-    "latex-workshop.latex.recipe.default": "first"
+    // Latex-workshopの設定で変更が必要そうなものは以下に記載
+    "latex-workshop.latex.autoBuild.run": "onSave",     // 保存時に自動でビルドするか
+    "latex-workshop.latex.recipe.default": "first",     // レシピ変更はここで選択する
+    //"latex-workshop.latex.recipe.default": "uplatex-without-bibtex",     // 参考文献なしはこっちを使用
+    "latex-workshop.latex.autoClean.run": "onSucceeded" // 中間ファイルの保存設定
 }

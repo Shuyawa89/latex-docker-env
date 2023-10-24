@@ -40,9 +40,8 @@
                 },
 
                 //latex-workshopとコンパイル設定
-                "latex-workshop.latex.autoBuild.run": "onSave",
                 "latex-workshop.intellisense.package.enabled": true,
-                "latex-workshop.latex.autoClean.run": "onBuilt",
+                "latex-workshop.view.pdf.viewer": "tab",
                 "latex-workshop.latex.recipes": [
                     {
                         "name": "uplatex-with-bibtex",
@@ -110,7 +109,33 @@
                             "%DOCFILE%"
                         ]
                     }
-                ]
+                ],
+                "latex-workshop.latex.clean.fileTypes": [
+                    "%DOCFILE%.aux",
+                    "%DOCFILE%.bbl",
+                    "%DOCFILE%.blg",
+                    "%DOCFILE%.idx",
+                    "%DOCFILE%.ind",
+                    "%DOCFILE%.lof",
+                    "%DOCFILE%.lot",
+                    "%DOCFILE%.out",
+                    "%DOCFILE%.toc",
+                    "%DOCFILE%.acn",
+                    "%DOCFILE%.acr",
+                    "%DOCFILE%.alg",
+                    "%DOCFILE%.glg",
+                    "%DOCFILE%.glo",
+                    "%DOCFILE%.gls",
+                    "%DOCFILE%.fls",
+                    "%DOCFILE%.log",
+                    "%DOCFILE%.fdb_latexmk",
+                    "%DOCFILE%.snm",
+                    "%DOCFILE%.synctex(busy)",
+                    "%DOCFILE%.nav",
+                    "%DOCFILE%.vrb",
+                    "%DOCFILE%.dvi"
+
+                  ]
             },
             "extensions": [
                 "James-Yu.latex-workshop",
