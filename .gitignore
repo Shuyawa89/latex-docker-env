@@ -23,7 +23,8 @@
 *.log
 *.fdb_latexmk
 *.snm
-*.synctex(busy)
+*.synctex
+*.synctex.gz
 *.nav
 *.vrb
 *.dvi
